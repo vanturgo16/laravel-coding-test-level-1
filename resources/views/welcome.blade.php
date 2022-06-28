@@ -15,6 +15,7 @@
         <div class="row pt-5">
             <div class="col-8">
                 <a href="{{ url('events/create') }}" class="btn btn-primary btn-sm">Create Event</a>
+                <a href="{{ url('external') }}" class="btn btn-primary btn-sm">External API</a>
             </div>
             <div class="col-4">
                 <form class="form-inline" action="{{ url('/events') }}" enctype="multipart/form-data" method="POST">

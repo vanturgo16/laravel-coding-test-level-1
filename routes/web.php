@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\eventWebController;
+use App\Http\Controllers\externalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,5 @@ Route::post('events/store', [eventWebController::class,'store']);
 Route::post('events/delete', [eventWebController::class,'delete']);
 Route::post('events/update', [eventWebController::class,'update']);
 Route::get('events/{id}/edit', [eventWebController::class,'edit']);
+
+Route::get('external', [externalController::class,'index']);
