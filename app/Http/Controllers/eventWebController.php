@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\eventMail;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 use function Ramsey\Uuid\v1;
@@ -57,6 +59,19 @@ class eventWebController extends Controller
             'startAt' => $request->start_at,
             'endAt' => $request->end_at,
         ]);
+
+        $recipient='vanturgo16@gmail.com';
+        $details = [
+            'title' => 'Success Create event',
+            'id' => $uuid,
+            'name' => $request->event_name,
+            'slug' => $slug,
+            'start_at' => $request->start_at,
+            'end_at' => $request->end_at
+        ];
+
+        Mail::to($recipient)
+        ->send(new eventMail($details));
 
         return redirect('/events')->with('status','Success Add Event');
     }
