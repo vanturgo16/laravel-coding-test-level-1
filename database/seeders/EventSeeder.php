@@ -25,7 +25,7 @@ class EventSeeder extends Seeder
             $ends_at= Carbon::createFromFormat('Y-m-d H:i:s', $starts_at)->addHours( $faker->numberBetween( 1, 8 ) );
 
             DB::table('events')->insert([
-                'id' => $faker->uuid,
+                'id' => Str::orderedUuid(),
                 'name' => $faker->name,
                 'slug' => $slug,
                 'created_at' => $now,
